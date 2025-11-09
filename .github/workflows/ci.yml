@@ -1,0 +1,21 @@
+name: ci
+on: { push: {}, pull_request: {} }
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: |
+          python -m pip install --upgrade pip
+          pip install -r examples/phi2-eo-tile-filter/requirements.txt
+          pip install onnxscript==0.1.0
+      - name: Smoke test EO example
+        working-directory: examples/phi2-eo-tile-filter
+        run: |
+          python -m data.synth --out ./tiles --n 64 --bands 3 --size 32
+          python -m src.train --data ./tiles --epochs 1 --bands 3 --size 32
+          python -m src.export_onnx --weights runs/tinycnn.pt --out models/tinycnn_fp32.onnx --bands 3 --size 32
+          python -m src.quantize_ptq --onnx models/tinycnn_fp32.onnx --calib ./tiles/val --out models/tinycnn_int8.onnx --size 32
+          python -m src.infer_onnx --onnx models/tinycnn_int8.onnx --data ./tiles/val --bands 3 --size 32

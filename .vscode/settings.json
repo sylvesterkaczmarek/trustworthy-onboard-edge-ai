@@ -1,0 +1,5 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/examples/phi2-eo-tile-filter/.venv/bin/python",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.terminal.activateEnvironment": true
+}

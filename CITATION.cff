@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: phisat2-trustworthy-onboard-ai
+message: If you use this software, please cite it.
+type: software
+authors:
+  - family-names: Kaczmarek
+    given-names: Sylvester
+license: MIT
+version: v0.1
+repository-code: https://github.com/sylvesterkaczmarek/phisat2-trustworthy-onboard-ai
