@@ -144,4 +144,4 @@ If you use or adapt this repository, please cite
 
 MIT. See [LICENSE](LICENSE).
 
-© Sylvester Kaczmarek · https://www.sylvesterkaczmarek.com
+© **Sylvester Kaczmarek** · https://www.sylvesterkaczmarek.com
